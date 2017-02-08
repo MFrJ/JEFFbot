@@ -7,3 +7,4 @@ def bar():
     print(2)
     return
 print("aksjdhkasdj")
+print("maksjdh ")
