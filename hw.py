@@ -6,3 +6,4 @@ def foo():
 def bar():
     print(2)
     return
+print("aksjdhkasdj")
