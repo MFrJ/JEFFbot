@@ -1,10 +1,18 @@
 import asyncio
 import discord
 import re
+from os import path
 
 client = discord.Client()
-macro_dict = {}
 command = re.compile("!([a-zA-Z0-9])+")
+macro_dict = {}
+with open("C:\\Users\\Marcelo\\Desktop\\JEFFbot\\resources\\txts\\macros.txt",'r') as f:
+    if path.getsize("C:\\Users\\Marcelo\\Desktop\\JEFFbot\\resources\\txts\\macros.txt") > 0:
+        for lines in f:
+            if lines != "":
+                (k,v) = lines.split(" ", 1)
+                macro_dict[k] = v
+
 
 
 
@@ -29,6 +37,8 @@ async def on_message(message):
                     await client.send_message(message.channel, macro_dict[command.match(message.content).group(0)[1:]],tts=True)
                 elif re.sub(command, "", message.content) != "":
                      macro_dict[command.match(message.content).group(0)[1:]] = re.sub("!([a-zA-Z0-9])+ ", "", message.content);
+                     with open("C:\\Users\\Marcelo\\Desktop\\JEFFbot\\resources\\txts\\macros.txt",'a') as f:
+                         f.write(command.match(message.content).group(0)[1:] + " " + macro_dict[command.match(message.content).group(0)[1:]].replace("\n"," ") + "\n")
                 else:
                     await client.send_message(message.channel, "uso: !macro <txt>")
         elif command.search(message.content):
