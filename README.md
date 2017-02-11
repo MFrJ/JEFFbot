@@ -1,2 +1,2 @@
 # JEFFbot
-Discord bot for practice purposes. High octane garbage.
+Discord bot for practice purposes. 
