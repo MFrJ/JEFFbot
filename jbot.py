@@ -3,6 +3,9 @@ import discord
 
 client = discord.Client()
 
+def isMe(msg):
+    return msg.author == client.user
+    
 @client.event
 async def on_ready():
     print('Logged in as')
@@ -31,6 +34,7 @@ async def on_message(message):
     #     await asyncio.sleep(5)
     #     await client.send_message(message.channel, 'Done sleeping')
     elif message.content.startswith('!jeff'):
-        await client.send_message(message.channel, "My nama jeff")
+        await client.send_message(message.channel, "My nama jeff", tts=True)
+
 
 client.run("Mjc4ODYzMTA3NzU2MTMwMzA0.C3y1Ig.oKNoMuPhV0EUuC5TreOgBM8yUUo")
