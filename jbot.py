@@ -31,6 +31,13 @@ async def on_message(message):
     if not isMe(message):
         if message.content.startswith('!jeff'):
             await client.send_message(message.channel, "My nama jeff", tts=True)
+        #macro list
+        elif message.content.startswith('!memes'):
+            with  open("C:\\Users\\Marcelo\\Desktop\\JEFFbot\\resources\\txts\\macros.txt",'r') as f:
+                for lines in f:
+                    (k,v) = lines.split(" ", 1)
+                    await client.send_message(message.channel, k + ": " + v)
+        #create macro            
         elif message.content.startswith("!"):
             if command.match(message.content):
                 if command.match(message.content).group(0)[1:] in macro_dict.keys():
